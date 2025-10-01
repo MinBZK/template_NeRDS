@@ -1,4 +1,4 @@
-# NeRDS Template v0.1.0
+# NeRDS Template v0.1.0 (latest)
 
 ## Introductie
 
@@ -6,168 +6,248 @@ Dit document beschrijft de template voor NeRDS (Nederlandse Richtlijnen Digitale
 
 ## Specificatie van de Template
 
-### Richtlijn Structuur
+```yaml
+schema_version: "0.1.0"
+titel: "{richtlijn_titel}"                              # Verplicht. Voorbeeld: "Toegankelijkheid van Overheidswebsites"
 
-Een NeRDS richtlijn bestaat uit de volgende onderdelen:
+beschrijving:
+  wat: "{richtlijn_beschrijving}"                       # Verplicht. Voorbeeld: "Deze richtlijn beschrijft hoe overheidswebsites toegankelijk moeten zijn volgens WCAG 2.1 niveau AA standaarden."
 
-#### 1. Richtlijn Titel
-Titel van de richtlijn
+rationale:
+  waarom: "{rationale_waarom}"                          # Optioneel. Voorbeeld: "Toegankelijke websites zorgen ervoor dat alle burgers, ongeacht hun beperkingen, gelijke toegang hebben tot overheidsinformatie en -diensten."
+  beoogd_effect: "{rationale_beoogd_effect}"            # Optioneel. Voorbeeld: "Verhoogde inclusiviteit en naleving van wettelijke verplichtingen."
+  risicos:                                              # Optioneel.
+    - "{risico_1}"                                      # Voorbeeld: "Uitsluiting van burgers met een beperking"
+    - "{risico_2}"                                      # Voorbeeld: "Juridische risico's door niet-naleving van wetgeving"
 
-#### 2. Beschrijving (Wat)
-Beschrijving van de richtlijn en de belangrijkste termen daarin
+doelgroep:
+  primaire_doelgroep:                                   # Optioneel.
+    - "{doelgroep_1}"                                   # Voorbeeld: "Frontend ontwikkelaars"
+    - "{doelgroep_2}"                                   # Voorbeeld: "UX/UI designers"
+  handelingsperspectief:                                # Optioneel.
+    - doelgroep: "{doelgroep_naam}"                     # Voorbeeld: "Frontend ontwikkelaars"
+      handelingen: "{handelingen_beschrijving}"         # Voorbeeld: "Implementeer ARIA-labels en zorg voor keyboard navigatie"
 
-#### 3. Rationale (Waarom)
-- Waarom is deze richtlijn een goed idee
-- Welk effect beoogt de richtlijn te bereiken
-- Risico's bij niet-toepassen
+implementatie:
+  methoden_technieken:                                  # Optioneel.
+    - naam: "{methode_naam}"                            # Voorbeeld: "Semantische HTML"
+      beschrijving: "{methode_beschrijving}"            # Voorbeeld: "Gebruik correcte HTML elementen voor hun bedoelde doel"
+      verplicht: {true/false}                           # Voorbeeld: true
+  tools:                                                # Optioneel.
+    - naam: "{tool_naam}"                               # Voorbeeld: "axe DevTools"
+      type: "{tool_type}"                               # Voorbeeld: "Browser extensie voor toegankelijkheidscontrole"
+      beschrijving: "{tool_beschrijving}"               # Voorbeeld: "Automatische detectie van toegankelijkheidsproblemen"
+      verplicht: {true/false}                           # Voorbeeld: false
+      url: "{tool_url}"                                 # Voorbeeld: "https://www.deque.com/axe/"
+  subrichtlijnen:                                       # Optioneel.
+    - titel: "{subrichtlijn_titel}"                     # Voorbeeld: "Kleurcontrast"
+      omschrijving: "{subrichtlijn_omschrijving}"       # Voorbeeld: "Richtlijnen voor voldoende contrast tussen tekst en achtergrond"
+      link: "{subrichtlijn_link}"                       # Voorbeeld: "./subrichtlijnen/kleurcontrast.yaml"
 
-#### 4. Doelgroep (Wie)
-- Voor welke doelgroep is deze richtlijn primair bedoeld
-- Op welke manier kan elke doelgroep met deze richtlijn aan de slag (handelingsperspectief)
+succescriteria:                                         # Optioneel.
+  - criterium: "{succes_criterium}"                     # Voorbeeld: "Alle afbeeldingen hebben alt-tekst"
+    voldaan: {true/false}                               # Voorbeeld: true
 
-#### 5. Implementatie (Hoe)
+toepassingsvoorwaarde:
+  voorwaarden:                                          # Optioneel.
+    - "{toepassingsvoorwaarde_1}"                       # Voorbeeld: "Van toepassing op alle publiek toegankelijke overheidswebsites"
+    - "{toepassingsvoorwaarde_2}"                       # Voorbeeld: "Verplicht volgens het Tijdelijk besluit digitale toegankelijkheid overheid"
 
-##### Methoden/Technieken
-Welke methoden en/of technieken kun je gebruiken om aan de richtlijn te voldoen. Aangeven welke methoden en/of technieken al dan niet verplicht of optioneel zijn. Verplicht betekent dat je eigenlijk zonder de methode of techniek niet aan de richtlijn kan voldoen.
+bronnen:
+  wetten:                                               # Optioneel.
+    - naam: "{wet_naam}"                                # Voorbeeld: "Tijdelijk besluit digitale toegankelijkheid overheid"
+      url: "{wet_url}"                                  # Voorbeeld: "https://wetten.overheid.nl/BWBR0040936"
+  beleid:                                               # Optioneel.
+    - naam: "{beleid_naam}"                             # Voorbeeld: "Digitale Inclusie Agenda"
+      url: "{beleid_url}"                               # Voorbeeld: "https://www.digitaleoverheid.nl"
+  standaarden:                                          # Optioneel.
+    - naam: "{standaard_naam}"                          # Voorbeeld: "WCAG 2.1"
+      url: "{standaard_url}"                            # Voorbeeld: "https://www.w3.org/TR/WCAG21/"
+  communities:                                          # Optioneel.
+    - naam: "{community_naam}"                          # Voorbeeld: "Toegankelijkheid Community NL"
+      url: "{community_url}"                            # Voorbeeld: "https://www.toegankelijkheidsverklaring.nl"
+  literatuur:                                           # Optioneel.
+    - titel: "{literatuur_titel}"                       # Voorbeeld: "Inclusive Design Patterns"
+      auteurs:                                          # Optioneel.
+        - "{auteur_1}"                                  # Voorbeeld: "Heydon Pickering"
+      url: "{literatuur_url}"                           # Optioneel. Voorbeeld: "https://shop.smashingmagazine.com/products/inclusive-design-patterns"
+      doi: "{doi}"                                      # Optioneel. Voorbeeld: "10.1234/example"
+  developer_overheid:                                   # Optioneel.
+    - titel: "{artikel_titel}"                          # Voorbeeld: "Toegankelijkheid testen met automatische tools"
+      type: "{artikel_type}"                            # Voorbeeld: "blog" of "kennisbank"
+      url: "{artikel_url}"                              # Voorbeeld: "https://developer.overheid.nl/blog/toegankelijkheid"
 
-##### Tools
-Welke tools kun je gebruiken om aan de richtlijn te voldoen. Aangeven welke tools al dan niet verplicht of optioneel zijn. Verplicht betekent dat je eigenlijk zonder de tool niet aan de richtlijn kan voldoen. Onderscheid maken tussen soorten tools en concrete voorbeelden.
-
-##### Subrichtlijnen
-Opsomming van de subrichtlijnen (de korte omschrijving), dit zijn linkjes naar aparte pagina's voor elke subrichtlijn die ook weer dit sjabloon gebruiken.
-
-#### 6. Succescriteria
-Wanneer voldoe je wel/niet aan deze richtlijn
-
-#### 7. Toepassingsvoorwaarde (Wie & Wanneer)
-Wanneer is deze richtlijn voor jou van toepassing
-
-#### 8. Bronnen
-
-##### Wetten
-Welke wetten zijn van toepassing op deze richtlijn
-
-##### Beleid
-Welke beleidsstukken zijn van toepassing op deze richtlijn
-
-##### Standaarden
-Welke standaarden zou je kunnen gebruiken om aan de richtlijn te voldoen
-
-##### Communities
-Welke communities bestaan er (in NL) waar kennis op het vlak van deze richtlijn wordt uitgewisseld
-
-##### Literatuur
-Welke (tijdloze/wetenschappelijke) literatuur is relevant voor deze richtlijn. Denk hier aan boeken en openbare wetenschappelijke artikelen
-
-##### Bronnen op developer.overheid.nl
-Blogs en kennisbank artikelen
-
-#### 9. Gerelateerde Richtlijnen
-Welke andere richtlijnen zijn gerelateerd en waarom? Versterkend effect bijvoorbeeld
+gerelateerde_richtlijnen:                               # Optioneel.
+  - titel: "{gerelateerde_richtlijn_titel}"             # Voorbeeld: "Gebruiksvriendelijkheid van Overheidswebsites"
+    relatie: "{relatie_beschrijving}"                   # Voorbeeld: "Toegankelijkheid en gebruiksvriendelijkheid versterken elkaar"
+    link: "{gerelateerde_richtlijn_link}"               # Voorbeeld: "./gebruiksvriendelijkheid.yaml"
+```
 
 ## Voorbeeld YAML Structuur
 
 ```yaml
 schema_version: "0.1.0"
-titel: "Voorbeeld Richtlijn Titel"
+titel: "Toegankelijkheid van Overheidswebsites"
 
 beschrijving:
-  wat: "Beschrijving van de richtlijn en de belangrijkste termen"
+  wat: "Deze richtlijn beschrijft hoe overheidswebsites toegankelijk moeten zijn volgens WCAG 2.1 niveau AA standaarden. Toegankelijkheid betekent dat websites bruikbaar zijn voor alle burgers, inclusief mensen met visuele, auditieve, motorische of cognitieve beperkingen."
 
 rationale:
-  waarom: "Uitleg waarom deze richtlijn belangrijk is"
-  beoogd_effect: "Het beoogde effect van deze richtlijn"
+  waarom: "Toegankelijke websites zorgen ervoor dat alle burgers, ongeacht hun beperkingen, gelijke toegang hebben tot overheidsinformatie en -diensten. Dit is een fundamenteel recht en wettelijke verplichting."
+  beoogd_effect: "Verhoogde inclusiviteit, betere gebruikerservaring voor iedereen, en naleving van wettelijke verplichtingen. Toegankelijke websites zijn ook beter vindbaar in zoekmachines en werken beter op verschillende apparaten."
   risicos:
-    - "Risico 1 bij niet-toepassen"
-    - "Risico 2 bij niet-toepassen"
+    - "Uitsluiting van burgers met een beperking van essentiële overheidsdiensten"
+    - "Juridische risico's door niet-naleving van het Tijdelijk besluit digitale toegankelijkheid overheid"
+    - "Reputatieschade voor de overheidsorganisatie"
+    - "Hogere kosten door later moeten aanpassen van de website"
 
 doelgroep:
   primaire_doelgroep:
-    - "Softwareontwikkelaars"
-    - "Projectmanagers"
+    - "Frontend ontwikkelaars"
+    - "UX/UI designers"
+    - "Content managers"
+    - "Product owners"
   handelingsperspectief:
-    - doelgroep: "Softwareontwikkelaars"
-      handelingen: "Implementeer de richtlijn in de code"
-    - doelgroep: "Projectmanagers"
-      handelingen: "Zorg voor naleving binnen het project"
+    - doelgroep: "Frontend ontwikkelaars"
+      handelingen: "Implementeer semantische HTML, ARIA-labels, en zorg voor keyboard navigatie. Test regelmatig met toegankelijkheidstools en screenreaders."
+    - doelgroep: "UX/UI designers"
+      handelingen: "Ontwerp met voldoende kleurcontrast, duidelijke focusindicatoren, en zorg voor logische tab-volgorde. Houd rekening met verschillende schermformaten en hulpmiddelen."
+    - doelgroep: "Content managers"
+      handelingen: "Schrijf duidelijke alt-teksten voor afbeeldingen, gebruik koppen op de juiste manier, en zorg voor begrijpelijke linkteksten."
+    - doelgroep: "Product owners"
+      handelingen: "Neem toegankelijkheidseisen op in de Definition of Done en zorg voor budget voor toegankelijkheidstesten en -verbeteringen."
 
 implementatie:
   methoden_technieken:
-    - naam: "Methode 1"
-      beschrijving: "Beschrijving van de methode"
+    - naam: "Semantische HTML"
+      beschrijving: "Gebruik correcte HTML elementen voor hun bedoelde doel (bijv. <button> voor knoppen, <nav> voor navigatie, <main> voor hoofdinhoud)"
       verplicht: true
-    - naam: "Methode 2"
-      beschrijving: "Beschrijving van de methode"
-      verplicht: false
+    - naam: "ARIA attributen"
+      beschrijving: "Gebruik ARIA (Accessible Rich Internet Applications) attributen om extra context te geven aan dynamische content en complexe widgets"
+      verplicht: true
+    - naam: "Keyboard navigatie"
+      beschrijving: "Zorg dat alle functionaliteit beschikbaar is via het toetsenbord, met logische tab-volgorde en zichtbare focus-indicatoren"
+      verplicht: true
+    - naam: "Responsief ontwerp"
+      beschrijving: "Ontwerp websites die goed werken op verschillende schermformaten en met verschillende zoom-niveaus (tot 200%)"
+      verplicht: true
   tools:
-    - naam: "Tool 1"
-      type: "Automated testing tool"
-      beschrijving: "Beschrijving van de tool"
+    - naam: "axe DevTools"
+      type: "Browser extensie"
+      beschrijving: "Automatische detectie van toegankelijkheidsproblemen tijdens ontwikkeling"
+      verplicht: false
+      url: "https://www.deque.com/axe/"
+    - naam: "WAVE"
+      type: "Online validatietool"
+      beschrijving: "Webgebaseerde tool voor het evalueren van toegankelijkheid van webpagina's"
+      verplicht: false
+      url: "https://wave.webaim.org/"
+    - naam: "NVDA of JAWS"
+      type: "Screenreader"
+      beschrijving: "Test de website met een screenreader om de gebruikerservaring voor blinde gebruikers te evalueren"
       verplicht: true
-      url: "https://example.com/tool1"
+      url: "https://www.nvaccess.org/"
+    - naam: "Lighthouse"
+      type: "Browser DevTool"
+      beschrijving: "Geïntegreerde toegankelijkheidsaudit in Chrome DevTools"
+      verplicht: false
+      url: "https://developers.google.com/web/tools/lighthouse"
   subrichtlijnen:
-    - titel: "Subrichtlijn 1"
-      omschrijving: "Korte beschrijving"
-      link: "./subrichtlijnen/subrichtlijn1.yaml"
+    - titel: "Kleurcontrast"
+      omschrijving: "Richtlijnen voor voldoende contrast tussen tekst en achtergrond (minimaal 4.5:1 voor normale tekst, 3:1 voor grote tekst)"
+      link: "./subrichtlijnen/kleurcontrast.yaml"
+    - titel: "Formuliertoegankelijkheid"
+      omschrijving: "Richtlijnen voor toegankelijke formulieren met labels, foutmeldingen en validatie"
+      link: "./subrichtlijnen/formulieren.yaml"
+    - titel: "Multimedia toegankelijkheid"
+      omschrijving: "Richtlijnen voor ondertiteling, audiodescriptie en transcripties van video- en audio-inhoud"
+      link: "./subrichtlijnen/multimedia.yaml"
 
 succescriteria:
-  - criterium: "Criterium 1 is voldaan"
+  - criterium: "Alle afbeeldingen hebben betekenisvolle alt-tekst of zijn gemarkeerd als decoratief"
     voldaan: true
-  - criterium: "Criterium 2 is voldaan"
+  - criterium: "Kleurcontrast voldoet aan WCAG 2.1 niveau AA (minimaal 4.5:1 voor normale tekst)"
+    voldaan: true
+  - criterium: "Alle functionaliteit is bereikbaar en bedienbaar via toetsenbord"
+    voldaan: true
+  - criterium: "Focusindicatoren zijn duidelijk zichtbaar"
+    voldaan: true
+  - criterium: "Formulieren hebben labels en duidelijke foutmeldingen"
+    voldaan: true
+  - criterium: "Website is getest met minimaal één screenreader"
+    voldaan: true
+  - criterium: "Toegankelijkheidsverklaring is beschikbaar en up-to-date"
     voldaan: false
 
 toepassingsvoorwaarde:
   voorwaarden:
-    - "Deze richtlijn is van toepassing op alle overheidssystemen"
-    - "Deze richtlijn is van toepassing bij het gebruik van AI"
+    - "Van toepassing op alle publiek toegankelijke overheidswebsites en -applicaties"
+    - "Verplicht volgens het Tijdelijk besluit digitale toegankelijkheid overheid"
+    - "Van toepassing op nieuwe websites vanaf 23 september 2020"
+    - "Van toepassing op bestaande websites vanaf 23 september 2021"
+    - "Ook van toepassing op mobiele applicaties van overheidsorganisaties"
 
 bronnen:
   wetten:
-    - naam: "AVG"
-      url: "https://example.com/avg"
+    - naam: "Tijdelijk besluit digitale toegankelijkheid overheid"
+      url: "https://wetten.overheid.nl/BWBR0040936"
+    - naam: "EN 301 549 - Toegankelijkheidseisen voor ICT producten en diensten"
+      url: "https://www.etsi.org/deliver/etsi_en/301500_301599/301549/03.02.01_60/en_301549v030201p.pdf"
   beleid:
-    - naam: "Beleidsdocument X"
-      url: "https://example.com/beleid"
+    - naam: "Digitale Inclusie Agenda"
+      url: "https://www.digitaleoverheid.nl/overzicht-van-alle-onderwerpen/digitale-inclusie/"
+    - naam: "European Accessibility Act"
+      url: "https://ec.europa.eu/social/main.jsp?catId=1202"
   standaarden:
-    - naam: "ISO 27001"
-      url: "https://example.com/iso27001"
+    - naam: "WCAG 2.1 (Web Content Accessibility Guidelines)"
+      url: "https://www.w3.org/TR/WCAG21/"
+    - naam: "ARIA 1.2 (Accessible Rich Internet Applications)"
+      url: "https://www.w3.org/TR/wai-aria-1.2/"
+    - naam: "HTML Living Standard"
+      url: "https://html.spec.whatwg.org/"
   communities:
-    - naam: "Developer.overheid.nl"
-      url: "https://developer.overheid.nl"
+    - naam: "Stichting Accessibility"
+      url: "https://www.accessibility.nl/"
+    - naam: "Kennisplatform Toegankelijkheid"
+      url: "https://www.toegankelijkheidsverklaring.nl/"
+    - naam: "Web Accessibility Initiative (WAI)"
+      url: "https://www.w3.org/WAI/"
   literatuur:
-    - titel: "Boek over digitale systemen"
+    - titel: "Inclusive Design Patterns"
       auteurs:
-        - "Auteur 1"
-        - "Auteur 2"
-      url: "https://example.com/boek"
-      doi: "10.1234/example"
+        - "Heydon Pickering"
+      url: "https://shop.smashingmagazine.com/products/inclusive-design-patterns"
+    - titel: "Accessibility for Everyone"
+      auteurs:
+        - "Laura Kalbag"
+      url: "https://abookapart.com/products/accessibility-for-everyone"
+    - titel: "Don't Make Me Think, Revisited"
+      auteurs:
+        - "Steve Krug"
+      url: "https://sensible.com/dont-make-me-think/"
   developer_overheid:
-    - titel: "Blog artikel over richtlijnen"
+    - titel: "Toegankelijkheid testen met automatische tools"
       type: "blog"
-      url: "https://developer.overheid.nl/blog/artikel"
+      url: "https://developer.overheid.nl/blog/toegankelijkheid-automatisch-testen"
+    - titel: "Checklist toegankelijkheid"
+      type: "kennisbank"
+      url: "https://developer.overheid.nl/kennisbank/toegankelijkheid-checklist"
 
 gerelateerde_richtlijnen:
-  - titel: "Gerelateerde Richtlijn 1"
-    relatie: "Versterkend effect op deze richtlijn"
-    link: "./gerelateerde/richtlijn1.yaml"
-```
-
-## Schema
-
-De richtlijnen worden gevalideerd tegen een JSON Schema. Het schema is te vinden in `schemas/richtlijn_schema.json`.
-
-## Validatie
-
-Om een richtlijn YAML bestand te valideren tegen het schema, gebruik het volgende commando:
-
-```bash
-./script/validate --file_pairs schemas/richtlijn_schema.json:uw-richtlijn.yaml
+  - titel: "Gebruiksvriendelijkheid van Overheidswebsites"
+    relatie: "Toegankelijkheid en gebruiksvriendelijkheid versterken elkaar. Een toegankelijke website is vaak ook gebruiksvriendelijker voor alle gebruikers."
+    link: "./gebruiksvriendelijkheid.yaml"
+  - titel: "Privacy en Beveiliging van Webapplicaties"
+    relatie: "Privacy-functies (zoals cookie-banners en privacy-instellingen) moeten ook toegankelijk zijn."
+    link: "./privacy-beveiliging.yaml"
+  - titel: "Responsive Design Principes"
+    relatie: "Responsive design is een belangrijke voorwaarde voor toegankelijkheid op verschillende apparaten."
+    link: "./responsive-design.yaml"
 ```
 
 ## Changelog
 
 ### Version 0.1.0 (2025-10-01)
-- Initiële versie van de NeRDS richtlijn template
-- Gebaseerd op de structuur zoals gedefinieerd in de oorspronkelijke template
+- Initiële versie van de NeRDS richtlijn template, zoals gedefinieerd in de [oorspronkelijke template](https://github.com/developer-overheid-nl/don-site/issues/387)
 - JSON Schema voor validatie toegevoegd
-- Validatie script toegevoegd
+- Validatie script toegevoegd voor YAML
