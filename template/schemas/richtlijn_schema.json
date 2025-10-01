@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nerds.nl/schemas/richtlijn_schema.json",
+  "title": "NeRDS Richtlijn Schema",
+  "description": "JSON Schema voor NeRDS (Nederlandse Richtlijnen Digitale Systemen) richtlijnen",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "description": "Versie van het NeRDS schema"
+    },
+    "titel": {
+      "type": "string",
+      "description": "Titel van de richtlijn"
+    },
+    "beschrijving": {
+      "type": "object",
+      "description": "Beschrijving van de richtlijn (wat)",
+      "properties": {
+        "wat": {
+          "type": "string",
+          "description": "Beschrijving van de richtlijn en de belangrijkste termen daarin"
+        }
+      }
+    },
+    "rationale": {
+      "type": "object",
+      "description": "Rationale van de richtlijn (waarom)",
+      "properties": {
+        "waarom": {
+          "type": "string",
+          "description": "Waarom is deze richtlijn een goed idee"
+        },
+        "beoogd_effect": {
+          "type": "string",
+          "description": "Welk effect beoogt de richtlijn te bereiken"
+        },
+        "risicos": {
+          "type": "array",
+          "description": "Risico's bij niet-toepassen",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "doelgroep": {
+      "type": "object",
+      "description": "Doelgroep van de richtlijn (wie)",
+      "properties": {
+        "primaire_doelgroep": {
+          "type": "array",
+          "description": "Voor welke doelgroep is deze richtlijn primair bedoeld",
+          "items": {
+            "type": "string"
+          }
+        },
+        "handelingsperspectief": {
+          "type": "array",
+          "description": "Op welke manier kan elke doelgroep met deze richtlijn aan de slag",
+          "items": {
+            "type": "object",
+            "properties": {
+              "doelgroep": {
+                "type": "string"
+              },
+              "handelingen": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "implementatie": {
+      "type": "object",
+      "description": "Implementatie van de richtlijn (hoe)",
+      "properties": {
+        "methoden_technieken": {
+          "type": "array",
+          "description": "Methoden en/of technieken om aan de richtlijn te voldoen",
+          "items": {
+            "type": "object",
+            "properties": {
+              "naam": {
+                "type": "string"
+              },
+              "beschrijving": {
+                "type": "string"
+              },
+              "verplicht": {
+                "type": "boolean",
+                "description": "Of deze methode/techniek verplicht is"
+              }
+            }
+          }
+        },
+        "tools": {
+          "type": "array",
+          "description": "Tools om aan de richtlijn te voldoen",
+          "items": {
+            "type": "object",
+            "properties": {
+              "naam": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "description": "Type tool"
+              },
+              "beschrijving": {
+                "type": "string"
+              },
+              "verplicht": {
+                "type": "boolean",
+                "description": "Of deze tool verplicht is"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "subrichtlijnen": {
+          "type": "array",
+          "description": "Subrichtlijnen van deze richtlijn",
+          "items": {
+            "type": "object",
+            "properties": {
+              "titel": {
+                "type": "string"
+              },
+              "omschrijving": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string",
+                "description": "Link naar de subrichtlijn"
+              }
+            }
+          }
+        }
+      }
+    },
+    "succescriteria": {
+      "type": "array",
+      "description": "Succescriteria: wanneer voldoe je wel/niet aan deze richtlijn",
+      "items": {
+        "type": "object",
+        "properties": {
+          "criterium": {
+            "type": "string"
+          },
+          "voldaan": {
+            "type": "boolean",
+            "description": "Of aan dit criterium is voldaan"
+          }
+        }
+      }
+    },
+    "toepassingsvoorwaarde": {
+      "type": "object",
+      "description": "Toepassingsvoorwaarde: wie en wanneer",
+      "properties": {
+        "voorwaarden": {
+          "type": "array",
+          "description": "Wanneer is deze richtlijn voor jou van toepassing",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "bronnen": {
+      "type": "object",
+      "description": "Bronnen voor deze richtlijn",
+      "properties": {
+        "wetten": {
+          "type": "array",
+          "description": "Wetten die van toepassing zijn",
+          "items": {
+            "type": "object",
+            "properties": {
+              "naam": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "beleid": {
+          "type": "array",
+          "description": "Beleidsstukken die van toepassing zijn",
+          "items": {
+            "type": "object",
+            "properties": {
+              "naam": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "standaarden": {
+          "type": "array",
+          "description": "Standaarden om aan de richtlijn te voldoen",
+          "items": {
+            "type": "object",
+            "properties": {
+              "naam": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "communities": {
+          "type": "array",
+          "description": "Communities waar kennis wordt uitgewisseld",
+          "items": {
+            "type": "object",
+            "properties": {
+              "naam": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        },
+        "literatuur": {
+          "type": "array",
+          "description": "Wetenschappelijke literatuur en boeken",
+          "items": {
+            "type": "object",
+            "properties": {
+              "titel": {
+                "type": "string"
+              },
+              "auteurs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "doi": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "developer_overheid": {
+          "type": "array",
+          "description": "Bronnen op developer.overheid.nl",
+          "items": {
+            "type": "object",
+            "properties": {
+              "titel": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": ["blog", "kennisbank"]
+              },
+              "url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      }
+    },
+    "gerelateerde_richtlijnen": {
+      "type": "array",
+      "description": "Gerelateerde richtlijnen",
+      "items": {
+        "type": "object",
+        "properties": {
+          "titel": {
+            "type": "string"
+          },
+          "relatie": {
+            "type": "string",
+            "description": "Waarom is deze richtlijn gerelateerd (bijv. versterkend effect)"
+          },
+          "link": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": ["schema_version", "titel", "beschrijving"]
+}
