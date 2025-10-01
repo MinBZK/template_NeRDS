@@ -23,15 +23,15 @@ A NeRDS guideline document consists of nine main sections:
 6. **Succescriteria** - Success criteria for compliance
 7. **Toepassingsvoorwaarde (Wie & Wanneer)** - When the guideline applies
 8. **Bronnen** - Sources including laws, policies, standards, communities, literature, and developer.overheid.nl resources
-9. **Gerelateerde Richtlijnen** - Related guidelines and their relationships
 
 ## Usage
 
 ### Creating a New Guideline
 
-1. Create a new YAML file using the structure defined in `nerds-standard/latest.md`
+1. Create a new MkDocs/YAML file using the structure defined in `nerds-standard/latest.md`
 2. Fill in all relevant sections according to your guideline
-3. Validate your YAML file against the schema
+3. Validate your MkDocs/YAML file against the schema
+
 
 ### Validating Guidelines
 
