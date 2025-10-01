@@ -41,10 +41,6 @@ To validate a guideline YAML file:
 ./nerds-standard/script/validate --file_pairs nerds-standard/schemas/richtlijn_schema.json:your-guideline.yaml
 ```
 
-## Documentation
-
-See `nerds-standard/latest.md` for the complete specification and example YAML structure.
-
 ## License
 
 This project is licensed under the EUPL-1.2 License - see the LICENSE file for details.
